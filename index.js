@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const express = require("express");
 const config = require("./config");
-const { connect, writeSession, patch, parseDir } = require("./lib");
+const { connect, connectSession, parseDir } = require("./lib");
 const { getandRequirePlugins } = require("./lib/database/plugins");
 
 class BotSystem {
@@ -14,8 +14,10 @@ class BotSystem {
 
    async initialize() {
       try {
-         await patch();
-         await writeSession();
+         await connectSession(config.SESSION_ID, "/lib/session");
+         console.log("Version:", require("./package.json").version);
+
+         console.log("WhatsApp Bot Initializing...");
          await parseDir(path.join(__dirname, "/lib/database/"));
          console.log("Syncing Database");
          await config.DATABASE.sync();
