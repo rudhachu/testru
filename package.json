@@ -19,7 +19,7 @@
    "dependencies": {
       "@adiwajshing/keyed-db": "^0.2.4",
       "axios": "^1.7.7",
-      "baileys": "github:princerudh/Baileys.js",
+      "@whiskeysockets/baileys": "github:princerudh/Baileys",
       "browser-id3-writer": "^4.4.0",
       "cheerio": "1.0.0",
       "dotenv": "^16.4.5",
